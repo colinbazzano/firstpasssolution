@@ -77,4 +77,47 @@ def mergesort(lst):
 my_list = [8, 6, 5, 4, 45, 23, 63, 84, 24, 1, 333,
            65, 349, 923, 9534, 4782, 39886, 2, 29, 93, 549]
 
-print(mergesort(my_list))
+# print(mergesort(my_list))
+
+
+def merge2(arrA, arrB):
+    elements = len(arrA) + len(arrB)
+    merged_arr = [0] * elements
+    # initialize pointers to the front of A and B arrays
+    a = 0
+    b = 0
+    # compare the first elements of A and B
+    # Copy the smallest to merged_arr
+    # I am confused on the if a>=len(arrA) of why we are adding it the way we are.
+    for i in range(elements):
+        if a >= len(arrA):
+            merged_arr[i] = arrB[b]
+        elif b >= len(arrB):
+            merged_arr[i] = arrA[a]
+        if arrA[a] < arrB[b]:
+            merged_arr[i] = arrA[a]
+            a += 1
+        else:
+            merged_arr[i] = arrB[b]
+            b += 1
+    return merged_arr
+
+
+def merge_sort2(arr):
+    # Base Case: if the array is empty or len of 1 return
+    if len(arr) <= 1:
+        return arr
+    # split the arrays into half
+    left = arr[:len(arr) // 2]
+    right = arr[len(arr) // 2:]
+    left = merge_sort2(left)
+    right = merge_sort2(right)
+
+    return merge2(left, right)
+
+    # sort each half
+    # merge them back together
+    # return the array
+
+
+print(merge_sort2(my_list))
