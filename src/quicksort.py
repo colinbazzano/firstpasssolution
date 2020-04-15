@@ -26,3 +26,5 @@ def quicksort(data):
 my_list = [2, 5, 3, 7, 4, 8, 4, 2, 6, 44, 3, 77, 454, 23, 54, 1]
 
 print(quicksort(my_list))
+
+# IN PLACE QUICKSORT!
